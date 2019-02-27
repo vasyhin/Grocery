@@ -86,7 +86,7 @@ namespace Grocery.Data.Bill
                     bulkDiscount = _catalogService.GetBulkDiscount(item.Item.Name)
                 })
                 .Sum(item => item.bulkDiscount != null 
-                                ? (item.LineItem.Quantity / (item.bulkDiscount.BulkItemsCount + item.bulkDiscount.BonusItemsCount)) * item.bulkDiscount.BonusItemsCount * item.ItemPrice
+                                ? ((int)item.LineItem.Quantity / (item.bulkDiscount.BulkItemsCount + item.bulkDiscount.BonusItemsCount)) * item.bulkDiscount.BonusItemsCount * item.ItemPrice
                                 : 0);
 
             return bulkDiscountAmount;
