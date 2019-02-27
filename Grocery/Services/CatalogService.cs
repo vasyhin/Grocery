@@ -11,35 +11,24 @@ namespace Grocery.Services
     public class CatalogService : ICatalogService
     {
         private Dictionary<string, PricePerItem> _pricesPerItem = new Dictionary<string, PricePerItem>();
-        private Dictionary<string, PricePerWeight> _pricesPerWeight = new Dictionary<string, PricePerWeight>();
-        private Dictionary<string, Bulk> _bulkDiscounts = new Dictionary<string, Bulk>();
+        private Dictionary<string, BulkDiscount> _bulkDiscounts = new Dictionary<string, BulkDiscount>();
 
-        public Bulk GetBulkDiscount(string name)
+        public BulkDiscount GetBulkDiscount(string name)
         {
             throw new NotImplementedException();
         }
 
-        public decimal GetPricePerItem(string name)
+        public decimal GetItemPrice(string name)
         {
             throw new NotImplementedException();
         }
 
-        public Tuple<decimal, decimal> GetPricePerWeight(string name)
+        public void RegisterItemPrice(Item item, decimal price)
         {
             throw new NotImplementedException();
         }
 
-        public void RegisterPricePerItem(Item item, decimal price)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RegisterPricePerWeight(Item item, decimal weight, decimal price)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SetBulkDiscount(Bulk bulk)
+        public void SetBulkDiscount(BulkDiscount bulk)
         {
             throw new NotImplementedException();
         }

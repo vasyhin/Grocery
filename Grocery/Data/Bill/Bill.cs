@@ -11,19 +11,24 @@ namespace Grocery.Data.Bill
     public class Bill
     {
         /// <summary>
-        /// Name of the item
+        /// List of bill lines
         /// </summary>
-        public List<BillLine> Lines { get; set; }
+        public List<LineItem> LineItems { get; set; }
 
         /// <summary>
-        /// Applied coupon
+        /// Applied coupons
         /// </summary>
-        private Coupon _coupon;
+        private List<Coupon> _coupons;
 
         /// <summary>
         /// Catalog service reference
         /// </summary>
         private ICatalogService _catalogService;
+
+        /// <summary>
+        /// Returns bill amount
+        /// </summary>
+        public decimal TotalAmount => GetTotalBill();
 
         /// <summary>
         /// Creates instances of the bill
@@ -40,7 +45,7 @@ namespace Grocery.Data.Bill
         /// <param name="coupon">Coupon to apply</param>
         public void ApplyCoupon(Coupon coupon)
         {
-            _coupon = coupon;
+            _coupons.Add(coupon);
         }
 
         /// <summary>
@@ -58,6 +63,7 @@ namespace Grocery.Data.Bill
 
         private decimal GetCouponDiscount()
         {
+            // TODO: always take the first coupon for now. List of coupons is designed for future functionality
             throw new NotImplementedException();
         }
 

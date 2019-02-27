@@ -3,15 +3,18 @@
 namespace Grocery.Data.Bill
 {
     /// <summary>
-    /// Represents bill line
+    /// Represents bill line item
     /// </summary>
-    public class BillLine
+    public class LineItem
     {
         /// <summary>
         /// Item
         /// </summary>
         public Item Item { get; set; }
 
+        /// <summary>
+        /// Item quantity
+        /// </summary>
         public decimal Quantity { get; set; }
     }
 }

@@ -1,24 +1,25 @@
 ﻿using Grocery.Data.Catalog;
-using Grocery.Services;
-using System;
 
 namespace Grocery.Discounts
 {
     /// <summary>
     /// Represents bulk discount
     /// </summary>
-    public class Bulk: Discount
+    public class BulkDiscount
     {
         /// <summary>
-        /// 
+        /// Discounted item
         /// </summary>
         public Item Item { get; set; }
-        public int AmountToBuy { get; set; }
-        public int AmountToGetFree { get; set; }
 
-        public override decimal ApplyDiscount(ICatalogService catalogService)
-        {
-            throw new NotImplementedException();
-        }
+        /// <summary>
+        /// The number of items to be purchased to apply this discount
+        /// </summary>
+        public int BulkItemsCount { get; set; }
+
+        /// <summary>
+        /// The number of items to get free
+        /// </summary>
+        public int BonusItemsCount { get; set; }
     }
 }

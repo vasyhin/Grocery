@@ -14,25 +14,26 @@ namespace Grocery
         public static void Test()
         {
             var cs = new CatalogService();
-            cs.RegisterPricePerItem(new Item { Name = "Boxes of Cheerios"}, 6.99m);
-            cs.RegisterPricePerWeight(new Item { Name = "Apples" }, 1, 2.49m);
-            cs.SetBulkDiscount(new Bulk
+            cs.RegisterItemPrice(new Item { Name = "Boxes of Cheerios"}, 6.99m);
+            cs.RegisterItemPrice(new Item { Name = "Apples" }, 2.49m);
+            cs.SetBulkDiscount(new BulkDiscount
             {
                 Item = new Item { Name = "Boxes of Cheerios" },
-                AmountToBuy = 2,
-                AmountToGetFree = 1
+                BulkItemsCount = 2,
+                BonusItemsCount = 1
             });
-            var coupon = new Coupon { Threshhold = 100, MoneyOff = 5 };
+
+            var coupon = new Coupon { Threshold = 100, MoneyOff = 5 };
 
             var bill = new Bill(cs)
             {
-                Lines = new List<BillLine> {
-                    new BillLine
+                LineItems = new List<LineItem> {
+                    new LineItem
                     {
                         Item = new Item { Name = "Boxes of Cheerios"},
                         Quantity = 5
                     },
-                    new BillLine
+                    new LineItem
                     {
                         Item = new Item { Name = "Apples"},
                         Quantity = 1.75m
