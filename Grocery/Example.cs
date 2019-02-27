@@ -42,7 +42,7 @@ namespace Grocery
             };
 
             bill.ApplyCoupon(coupon);
-            var total = bill.GetTotalBill();
+            var total = bill.TotalAmount;
         }
     }
 }
