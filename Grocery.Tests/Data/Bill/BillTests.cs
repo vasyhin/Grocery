@@ -9,21 +9,21 @@ namespace Tests
     public class BillTests
     {
         [Test]
-        public void InterationTest()
+        public void CreateBill_WithNullListItems_ThrowException()
         {
             TestDelegate action = () => new Bill(null);
             Assert.Throws<ArgumentException>(action);
         }
 
         [Test]
-        public void InterationTest2()
+        public void CreateBill_WithEmptyListItems_ThrowException()
         {
             TestDelegate action = () => new Bill(new LineItem[0]);
             Assert.Throws<ArgumentException>(action);
         }
 
         [Test]
-        public void InterationTest3()
+        public void CreateBill_WithValidListItems_SuccessfulyCreate()
         {
             var bill = new Bill(new [] { new LineItem(new Item("test"), 5) });
 

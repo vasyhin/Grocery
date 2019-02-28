@@ -9,21 +9,21 @@ namespace Tests
     public class LineItemTests
     {
         [Test]
-        public void InterationTest()
+        public void CreateLineItem_WithNullItem_ThrowException()
         {
             TestDelegate action = () => new LineItem(null, 10);
             Assert.Throws<ArgumentNullException>(action);
         }
 
         [Test]
-        public void InterationTest2()
+        public void CreateLineItem_WithNegativeQuantity_ThrowException()
         {
             TestDelegate action = () => new LineItem(new Item("test"), -5);
             Assert.Throws<ArgumentOutOfRangeException>(action);
         }
 
         [Test]
-        public void InterationTest3()
+        public void CreateLineItem_WithValidItem_SuccessfulyCreate()
         {
             var lineItem = new LineItem(new Item("test"), 5);
 
