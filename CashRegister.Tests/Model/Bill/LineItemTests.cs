@@ -9,26 +9,20 @@ namespace Tests
     public class LineItemTests
     {
         [Test]
-        public void CreateLineItem_WithNullItem_ThrowException()
-        {
-            TestDelegate action = () => new LineItem(null, 10);
-            Assert.Throws<ArgumentNullException>(action);
-        }
-
-        [Test]
         public void CreateLineItem_WithNegativeQuantity_ThrowException()
         {
-            TestDelegate action = () => new LineItem(new Item("test"), -5);
+            TestDelegate action = () => new LineItem("test", 10m, -5);
             Assert.Throws<ArgumentOutOfRangeException>(action);
         }
 
         [Test]
         public void CreateLineItem_WithValidItem_SuccessfulyCreate()
         {
-            var lineItem = new LineItem(new Item("test"), 5);
+            var lineItem = new LineItem("test", 10m, 5);
 
-            Assert.AreEqual("test", lineItem.Item.Name);
+            Assert.AreEqual("test", lineItem.Name);
             Assert.AreEqual(5, lineItem.Quantity);
+            Assert.AreEqual(10m, lineItem.Price);
         }
     }
 }

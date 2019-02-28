@@ -14,8 +14,6 @@ namespace Tests
         public void IntegrationTest()
         {
             var cs = new CatalogService();
-            cs.RegisterItemPrice(new Item("Cheerios"), 6.99m);
-            cs.RegisterItemPrice(new Item("Apples"), 2.49m);
             cs.RegisterBulkDiscount(new BulkDiscount("Cheerios", 2, 1));
 
             var billCalculator = new BillCalculator(cs);
@@ -26,12 +24,12 @@ namespace Tests
 
             var bill = new Bill(new List<LineItem> {
                 // comes from cashier
-                new LineItem(new Item("Cheerios"), 5),
+                new LineItem("Cheerios", 6.99m, 5),
                 // comes from scales
-                new LineItem(new Item("Apples"), 1.75m)
+                new LineItem("Apples", 2.49m, 1.75m)
             });
 
-            var total = billCalculator.GetPrice(bill, coupons);
+            var total = billCalculator.GetFinalAmount(bill, coupons);
             Assert.AreEqual(32.3175, total);
         }
     }

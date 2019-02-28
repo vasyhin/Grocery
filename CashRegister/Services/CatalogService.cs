@@ -10,34 +10,7 @@ namespace CashRegister.Services
     /// </summary>
     public class CatalogService : ICatalogService
     {
-        private Dictionary<string, PricePerItem> _pricesPerItem = new Dictionary<string, PricePerItem>();
         private Dictionary<string, BulkDiscount> _bulkDiscounts = new Dictionary<string, BulkDiscount>();
-
-        /// <summary>
-        /// Registers price for the item
-        /// </summary>
-        /// <param name="item">Item</param>
-        /// <param name="price">Price</param>
-        public void RegisterItemPrice(Item item, decimal price)
-        {
-            if (item == null)
-                throw new InvalidOperationException($"{nameof(item)} can't be null");
-
-            _pricesPerItem[item.Name] = new PricePerItem { Item = item, Price = price };
-        }
-
-        /// <summary>
-        /// Returns price of the item
-        /// </summary>
-        /// <param name="name">Item name</param>
-        /// <returns>Price</returns>
-        public decimal GetItemPrice(string name)
-        {
-            if (_pricesPerItem.ContainsKey(name))
-                return _pricesPerItem[name].Price;
-
-            throw new InvalidOperationException($"Can't find price for {name} item");
-        }
 
         /// <summary>
         /// Registers bulk discount

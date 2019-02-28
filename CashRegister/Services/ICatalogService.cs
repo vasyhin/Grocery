@@ -10,20 +10,6 @@ namespace CashRegister.Services
     public interface ICatalogService
     {
         /// <summary>
-        /// Registers price for the item
-        /// </summary>
-        /// <param name="item">Item</param>
-        /// <param name="price">Price</param>
-        void RegisterItemPrice(Item item, decimal price);
-
-        /// <summary>
-        /// Returns price of the item
-        /// </summary>
-        /// <param name="name">Item name</param>
-        /// <returns>Price</returns>
-        decimal GetItemPrice(string name);
-
-        /// <summary>
         /// Registers bulk discount
         /// </summary>
         /// <param name="bulk">Bulk discount</param>

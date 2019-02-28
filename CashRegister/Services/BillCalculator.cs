@@ -17,10 +17,10 @@ namespace Services
         }
 
         /// <summary>
-        /// Returns total bill
+        /// Returns final bill amount
         /// </summary>
         /// <returns>Total bill</returns>
-        public decimal GetPrice(Bill bill, IEnumerable<Coupon> coupons)
+        public decimal GetFinalAmount(Bill bill, IEnumerable<Coupon> coupons)
         {
             var price = GetDiscountedPrice(bill);
 
@@ -39,19 +39,19 @@ namespace Services
         /// <returns></returns>
         private decimal GetDiscountedPrice(Bill bill)
         {
-            var rawPrice = GetRawPrice(bill);
+            var originalPrice = GetOriginalAmount(bill);
             var bulkDiscount = GetBulkDiscount(bill);
 
-            return rawPrice - bulkDiscount;
+            return originalPrice - bulkDiscount;
         }
 
         /// <summary>
-        /// Calculate raw price (without a discount)
+        /// Calculate original amount (without a discount)
         /// </summary>
-        /// <returns>Raw price</returns>
-        private decimal GetRawPrice(Bill bill)
+        /// <returns>Original amount</returns>
+        private decimal GetOriginalAmount(Bill bill)
         {
-            var price = bill.LineItems.Sum(item => _catalogService.GetItemPrice(item.Item.Name) * item.Quantity);
+            var price = bill.LineItems.Sum(item => item.Price * item.Quantity);
 
             return price;
         }
@@ -62,8 +62,8 @@ namespace Services
                 .Select(item => new
                 {
                     Quantity = item.Quantity,
-                    ItemPrice = _catalogService.GetItemPrice(item.Item.Name),
-                    bulkDiscount = _catalogService.GetBulkDiscount(item.Item.Name)
+                    ItemPrice = item.Price,
+                    bulkDiscount = _catalogService.GetBulkDiscount(item.Name)
                 })
                 .Where(i => i.bulkDiscount != null && i.Quantity > i.bulkDiscount.BulkItemsCount)
                 .Sum(item =>

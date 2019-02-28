@@ -10,9 +10,15 @@
         /// </summary>
         public string Name { get; }
 
-        public Item(string name)
+        /// <summary>
+        /// Item's cost
+        /// </summary>
+        public decimal Price { get; set; }
+
+        public Item(string name, decimal price)
         {
             Name = name;
+            Price = price;
         }
     }
 }

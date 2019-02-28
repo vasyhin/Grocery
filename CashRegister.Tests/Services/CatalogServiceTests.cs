@@ -9,38 +9,6 @@ namespace Tests
     public class CatalogServiceTests
     {
         [Test]
-        public void RegisterItemPrice_RegisterNullItem_ShouldThrowInvalidOperationException()
-        {
-            var catalogService = new CatalogService();
-
-            TestDelegate action = () => catalogService.RegisterItemPrice(null, 0m);
-
-            Assert.Throws<InvalidOperationException>(action);
-        }
-
-        [Test]
-        public void GetItemPrice_IfProductRegistered_ShouldReturnValidPrice()
-        {
-            var catalogService = new CatalogService();
-
-            catalogService.RegisterItemPrice(new Item("product a"), 100m);
-            var price = catalogService.GetItemPrice("product a");
-
-            Assert.AreEqual(100m, price);
-        }
-
-        [Test]
-        public void GetItemPrice_IfPRoductNotRegistered_ShouldThrowInvalidOperationException()
-        {
-            var catalogService = new CatalogService();
-
-            catalogService.RegisterItemPrice(new Item("product a"), 100m);
-            TestDelegate action = () => catalogService.GetItemPrice("product b");
-
-            Assert.Throws<InvalidOperationException>(action);
-        }
-
-        [Test]
         public void GetBulkDiscount_IfDiscountRegistered_ShouldReturnValidDiscount()
         {
             var catalogService = new CatalogService();

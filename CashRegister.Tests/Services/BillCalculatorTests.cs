@@ -18,16 +18,13 @@ namespace Tests
             mockCatalogService
                 .Setup(s => s.GetBulkDiscount(It.IsAny<string>()))
                 .Returns(null as BulkDiscount);
-            mockCatalogService
-                .Setup(s => s.GetItemPrice("apple"))
-                .Returns(10m);
 
             var billCalculator = new BillCalculator(mockCatalogService.Object);
 
             var bill = new Bill(new [] {
-                new LineItem(new Item("apple"), 1.5m)
+                new LineItem("apple", 10m, 1.5m)
             });
-            var price = billCalculator.GetPrice(bill, null);
+            var price = billCalculator.GetFinalAmount(bill, null);
 
             Assert.AreEqual(15, price);
         }
@@ -39,16 +36,13 @@ namespace Tests
             mockCatalogService
                 .Setup(s => s.GetBulkDiscount("apple"))
                 .Returns(new BulkDiscount("apple", 5, 1));
-            mockCatalogService
-                .Setup(s => s.GetItemPrice("apple"))
-                .Returns(10m);
 
             var billCalculator = new BillCalculator(mockCatalogService.Object);
 
             var bill = new Bill(new [] {
-                new LineItem(new Item("apple"), 6m)
+                new LineItem("apple", 10m, 6m)
             });
-            var price = billCalculator.GetPrice(bill, null);
+            var price = billCalculator.GetFinalAmount(bill, null);
 
             Assert.AreEqual(50, price);
         }
@@ -60,17 +54,14 @@ namespace Tests
             mockCatalogService
                 .Setup(s => s.GetBulkDiscount(It.IsAny<string>()))
                 .Returns(null as BulkDiscount);
-            mockCatalogService
-                .Setup(s => s.GetItemPrice("chocolate"))
-                .Returns(25m);
 
             var billCalculator = new BillCalculator(mockCatalogService.Object);
 
             var bill = new Bill(new [] {
-                new LineItem(new Item("chocolate"), 4m)
+                new LineItem("chocolate", 25m, 4m)
             });
             var coupon = new Coupon(110, 10);
-            var price = billCalculator.GetPrice(bill, new [] { coupon });
+            var price = billCalculator.GetFinalAmount(bill, new [] { coupon });
 
             Assert.AreEqual(100, price);
         }
@@ -82,17 +73,14 @@ namespace Tests
             mockCatalogService
                 .Setup(s => s.GetBulkDiscount(It.IsAny<string>()))
                 .Returns(null as BulkDiscount);
-            mockCatalogService
-                .Setup(s => s.GetItemPrice("chocolate"))
-                .Returns(25m);
 
             var billCalculator = new BillCalculator(mockCatalogService.Object);
 
             var bill = new Bill(new [] {
-                new LineItem(new Item("chocolate"), 4m)
+                new LineItem("chocolate", 25m, 4m)
             });
             var coupon = new Coupon(100, 10);
-            var price = billCalculator.GetPrice(bill, new [] { coupon });
+            var price = billCalculator.GetFinalAmount(bill, new [] { coupon });
 
             Assert.AreEqual(90, price);
         }
