@@ -37,12 +37,30 @@ namespace CashRegister.Tests.Services
 
             var billCalculator = new BillCalculator(mockBulkDiscountService.Object);
 
-            var bill = new BillModel(new [] {
+            var bill = new BillModel(new[] {
                 new LineItem("Cheerios", 10m, 6m)
             });
             var price = billCalculator.GetFinalAmount(bill, null);
 
             Assert.AreEqual(50, price);
+        }
+
+        [Test]
+        public void GetPrice_OneProductWithDoubledDiscounts_ShouldReturnDoubleAppliedDiscountPrice()
+        {
+            var mockBulkDiscountService = new Mock<IBulkDiscountService>();
+            mockBulkDiscountService
+                .Setup(s => s.GetBulkDiscount("Cheerios"))
+                .Returns(new BulkDiscount("Cheerios", 5, 1));
+
+            var billCalculator = new BillCalculator(mockBulkDiscountService.Object);
+
+            var bill = new BillModel(new [] {
+                new LineItem("Cheerios", 10m, 12m)
+            });
+            var price = billCalculator.GetFinalAmount(bill, null);
+
+            Assert.AreEqual(100, price);
         }
 
         [Test]

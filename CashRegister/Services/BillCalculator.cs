@@ -60,18 +60,13 @@ namespace CashRegister.Services
             var bulkDiscountAmount = bill.LineItems
                 .Select(item => new
                 {
-                    item.Quantity,
+                    LineItem = item,
                     ItemPrice = item.Price,
                     bulkDiscount = _bulkDiscountService.GetBulkDiscount(item.Name)
                 })
-                .Where(i => i.bulkDiscount != null && i.Quantity > i.bulkDiscount.BulkItemsCount)
-                .Sum(item =>
-                {
-                    var discount = item.bulkDiscount;
-                    var itemsToDiscount = Math.Min(item.Quantity - discount.BulkItemsCount, discount.BonusItemsCount);
-
-                    return itemsToDiscount * item.ItemPrice;
-                });
+                .Sum(item => item.bulkDiscount != null
+                                ? ((int)item.LineItem.Quantity / (item.bulkDiscount.BulkItemsCount + item.bulkDiscount.BonusItemsCount)) * item.bulkDiscount.BonusItemsCount * item.ItemPrice
+                                : 0);
 
             return bulkDiscountAmount;
         }

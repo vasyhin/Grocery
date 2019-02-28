@@ -18,3 +18,9 @@ Out of Scope
 
 		Performance
 		Localization
+
+Overview
+
+		The project model has separation on objects into domain objects and services.
+		This allows to have behaviour separated from domain models.
+		Domain models can be easily used within some ORM like EntityFramework to map domains into DB tables.
