@@ -1,4 +1,4 @@
-﻿namespace CashRegister.Discounts
+﻿namespace CashRegister.Model.Discounts
 {
     /// <summary>
     /// Represents bulk discount

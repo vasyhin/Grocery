@@ -1,14 +1,12 @@
-﻿using CashRegister.Model.Catalog;
-using CashRegister.Discounts;
-using System;
+﻿using CashRegister.Model.Discounts;
 using System.Collections.Generic;
 
 namespace CashRegister.Services
 {
     /// <summary>
-    /// CatalogService
+    /// BulkDiscountService
     /// </summary>
-    public class CatalogService : ICatalogService
+    public class BulkDiscountService : IBulkDiscountService
     {
         private Dictionary<string, BulkDiscount> _bulkDiscounts = new Dictionary<string, BulkDiscount>();
 

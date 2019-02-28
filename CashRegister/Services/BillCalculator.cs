@@ -2,18 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using CashRegister.Model.Bill;
-using CashRegister.Discounts;
-using CashRegister.Services;
+using CashRegister.Model.Discounts;
 
-namespace Services
+namespace CashRegister.Services
 {
     public class BillCalculator
     {
-        private readonly ICatalogService _catalogService;
+        private readonly IBulkDiscountService _bulkDiscountService;
 
-        public BillCalculator(ICatalogService catalogService)
+        public BillCalculator(IBulkDiscountService bulkDiscountService)
         {
-            _catalogService = catalogService;
+            _bulkDiscountService = bulkDiscountService;
         }
 
         /// <summary>
@@ -63,7 +62,7 @@ namespace Services
                 {
                     Quantity = item.Quantity,
                     ItemPrice = item.Price,
-                    bulkDiscount = _catalogService.GetBulkDiscount(item.Name)
+                    bulkDiscount = _bulkDiscountService.GetBulkDiscount(item.Name)
                 })
                 .Where(i => i.bulkDiscount != null && i.Quantity > i.bulkDiscount.BulkItemsCount)
                 .Sum(item =>

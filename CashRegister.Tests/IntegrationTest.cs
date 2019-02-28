@@ -1,19 +1,17 @@
 using System.Collections.Generic;
 using CashRegister.Model.Bill;
-using CashRegister.Model.Catalog;
-using CashRegister.Discounts;
+using CashRegister.Model.Discounts;
 using CashRegister.Services;
 using NUnit.Framework;
-using Services;
 
-namespace Tests
+namespace CashRegisterTests
 {
     public class Tests
     {
         [Test]
         public void IntegrationTest()
         {
-            var cs = new CatalogService();
+            var cs = new BulkDiscountService();
             cs.RegisterBulkDiscount(new BulkDiscount("Cheerios", 2, 1));
 
             var billCalculator = new BillCalculator(cs);

@@ -1,13 +1,11 @@
-﻿using CashRegister.Model.Catalog;
-using CashRegister.Discounts;
-using System;
+﻿using CashRegister.Model.Discounts;
 
 namespace CashRegister.Services
 {
     /// <summary>
-    /// Defines interface to work with CatalogService
+    /// Defines interface to work with BulkDiscountService
     /// </summary>
-    public interface ICatalogService
+    public interface IBulkDiscountService
     {
         /// <summary>
         /// Registers bulk discount

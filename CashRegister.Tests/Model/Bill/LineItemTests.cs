@@ -1,10 +1,8 @@
-
 using System;
 using CashRegister.Model.Bill;
-using CashRegister.Model.Catalog;
 using NUnit.Framework;
 
-namespace Tests
+namespace CashRegisterTests.Model.Bill
 {
     public class LineItemTests
     {
