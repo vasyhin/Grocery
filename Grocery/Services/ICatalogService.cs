@@ -27,7 +27,7 @@ namespace Grocery.Services
         /// Registers bulk discount
         /// </summary>
         /// <param name="bulk">Bulk discount</param>
-        void SetBulkDiscount(BulkDiscount bulk);
+        void RegisterBulkDiscount(BulkDiscount bulk);
 
         /// <summary>
         /// Returns bulk discount for item or null if no discount for the item exists

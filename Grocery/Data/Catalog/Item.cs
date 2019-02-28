@@ -8,6 +8,11 @@
         /// <summary>
         /// Name of the item
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; }
+
+        public Item(string name)
+        {
+            Name = name;
+        }
     }
 }
