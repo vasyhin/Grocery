@@ -79,7 +79,7 @@ namespace Services
 
         private decimal ApplyCouponDiscount(IEnumerable<Coupon> coupons, decimal price)
         {
-            // TODO: always take the first coupon for now. List of coupons is designed for future functionality
+            // always take the first coupon for now. List of coupons is designed for future functionality
             var coupon = coupons.FirstOrDefault();
 
             return coupon != null && coupon.Threshold <= price
