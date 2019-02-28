@@ -5,7 +5,7 @@ using Moq;
 using NUnit.Framework;
 using BillModel = CashRegister.Model.Bill.Bill;
 
-namespace CashRegisterTests.Model.Services
+namespace CashRegister.Tests.Services
 {
     public class BillCalculatorTests
     {
@@ -20,7 +20,7 @@ namespace CashRegisterTests.Model.Services
             var billCalculator = new BillCalculator(mockBulkDiscountService.Object);
 
             var bill = new BillModel(new [] {
-                new LineItem("apple", 10m, 1.5m)
+                new LineItem("Apples", 10m, 1.5m)
             });
             var price = billCalculator.GetFinalAmount(bill, null);
 
@@ -32,13 +32,13 @@ namespace CashRegisterTests.Model.Services
         {
             var mockBulkDiscountService = new Mock<IBulkDiscountService>();
             mockBulkDiscountService
-                .Setup(s => s.GetBulkDiscount("apple"))
-                .Returns(new BulkDiscount("apple", 5, 1));
+                .Setup(s => s.GetBulkDiscount("Cheerios"))
+                .Returns(new BulkDiscount("Cheerios", 5, 1));
 
             var billCalculator = new BillCalculator(mockBulkDiscountService.Object);
 
             var bill = new BillModel(new [] {
-                new LineItem("apple", 10m, 6m)
+                new LineItem("Cheerios", 10m, 6m)
             });
             var price = billCalculator.GetFinalAmount(bill, null);
 
@@ -56,7 +56,7 @@ namespace CashRegisterTests.Model.Services
             var billCalculator = new BillCalculator(mockBulkDiscountService.Object);
 
             var bill = new BillModel(new [] {
-                new LineItem("chocolate", 25m, 4m)
+                new LineItem("Chocolate", 25m, 4m)
             });
             var coupon = new Coupon(110, 10);
             var price = billCalculator.GetFinalAmount(bill, new [] { coupon });
@@ -75,7 +75,7 @@ namespace CashRegisterTests.Model.Services
             var billCalculator = new BillCalculator(mockBulkDiscountService.Object);
 
             var bill = new BillModel(new [] {
-                new LineItem("chocolate", 25m, 4m)
+                new LineItem("Chocolate", 25m, 4m)
             });
             var coupon = new Coupon(100, 10);
             var price = billCalculator.GetFinalAmount(bill, new [] { coupon });

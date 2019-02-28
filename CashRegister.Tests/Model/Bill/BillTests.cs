@@ -1,9 +1,9 @@
 using System;
-using NUnit.Framework;
 using CashRegister.Model.Bill;
+using NUnit.Framework;
 using BillModel = CashRegister.Model.Bill.Bill;
 
-namespace CashRegisterTests.Model.Bill
+namespace CashRegister.Tests.Model.Bill
 {
     public class BillTests
     {
@@ -24,10 +24,10 @@ namespace CashRegisterTests.Model.Bill
         [Test]
         public void CreateBill_WithValidListItems_SuccessfulyCreate()
         {
-            var bill = new BillModel(new [] { new LineItem("apple", 10, 5) });
+            var bill = new BillModel(new [] { new LineItem("Apples", 10, 5) });
 
             Assert.AreEqual(1, bill.LineItems.Count);
-            Assert.AreEqual("apple", bill.LineItems[0].Name);
+            Assert.AreEqual("Apples", bill.LineItems[0].Name);
             Assert.AreEqual(5, bill.LineItems[0].Quantity);
             Assert.AreEqual(10, bill.LineItems[0].Price);
         }

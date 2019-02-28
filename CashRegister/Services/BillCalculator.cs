@@ -18,7 +18,7 @@ namespace CashRegister.Services
         /// <summary>
         /// Returns final bill amount
         /// </summary>
-        /// <returns>Total bill</returns>
+        /// <returns>Final bill amount</returns>
         public decimal GetFinalAmount(Bill bill, IEnumerable<Coupon> coupons)
         {
             var price = GetDiscountedPrice(bill);
@@ -45,9 +45,9 @@ namespace CashRegister.Services
         }
 
         /// <summary>
-        /// Calculate original amount (without a discount)
+        /// Calculate original bill amount (without a discount)
         /// </summary>
-        /// <returns>Original amount</returns>
+        /// <returns>Original bill amount</returns>
         private decimal GetOriginalAmount(Bill bill)
         {
             var price = bill.LineItems.Sum(item => item.Price * item.Quantity);
@@ -60,7 +60,7 @@ namespace CashRegister.Services
             var bulkDiscountAmount = bill.LineItems
                 .Select(item => new
                 {
-                    Quantity = item.Quantity,
+                    item.Quantity,
                     ItemPrice = item.Price,
                     bulkDiscount = _bulkDiscountService.GetBulkDiscount(item.Name)
                 })
@@ -78,7 +78,7 @@ namespace CashRegister.Services
 
         private decimal ApplyCouponDiscount(IEnumerable<Coupon> coupons, decimal price)
         {
-            // always take the first coupon for now. List of coupons is designed for future functionality
+            // TODO: Always take the first coupon for now. List of coupons designed for future functionality
             var coupon = coupons.FirstOrDefault();
 
             return coupon != null && coupon.Threshold <= price

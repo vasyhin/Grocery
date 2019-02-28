@@ -3,8 +3,9 @@ using CashRegister.Model.Catalog;
 
 namespace CashRegister.Model.Bill
 {
+    /// <inheritdoc />
     /// <summary>
-    /// Represents bill line item
+    /// Represents bill's line item
     /// </summary>
     public class LineItem: Item
     {
@@ -17,7 +18,7 @@ namespace CashRegister.Model.Bill
             : base(name, price)
         {
             if (quantity < 0)
-                throw new ArgumentOutOfRangeException(nameof(quantity), "Quentity shold be positive");
+                throw new ArgumentOutOfRangeException(nameof(quantity), "Quantity should be positive");
 
             Quantity = quantity;
         }

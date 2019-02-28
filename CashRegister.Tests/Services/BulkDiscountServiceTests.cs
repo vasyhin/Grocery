@@ -11,11 +11,11 @@ namespace CashRegisterTests.Model.Services
         {
             var bulkDiscountService = new BulkDiscountService();
 
-            bulkDiscountService.RegisterBulkDiscount(new BulkDiscount("product a", 5, 2));
-            var discount = bulkDiscountService.GetBulkDiscount("product a");
+            bulkDiscountService.RegisterBulkDiscount(new BulkDiscount("Cheerios", 5, 2));
+            var discount = bulkDiscountService.GetBulkDiscount("Cheerios");
 
             Assert.NotNull(discount);
-            Assert.AreEqual("product a", discount.ItemName);
+            Assert.AreEqual("Cheerios", discount.ItemName);
             Assert.AreEqual(5, discount.BulkItemsCount);
             Assert.AreEqual(2, discount.BonusItemsCount);
         }
@@ -25,8 +25,8 @@ namespace CashRegisterTests.Model.Services
         {
             var bulkDiscountService = new BulkDiscountService();
 
-            bulkDiscountService.RegisterBulkDiscount(new BulkDiscount("product a", 5, 2));
-            var discount = bulkDiscountService.GetBulkDiscount("product b");
+            bulkDiscountService.RegisterBulkDiscount(new BulkDiscount("Cheerios", 5, 2));
+            var discount = bulkDiscountService.GetBulkDiscount("Apples");
 
             Assert.Null(discount);
         }

@@ -4,7 +4,7 @@ using CashRegister.Model.Discounts;
 using CashRegister.Services;
 using NUnit.Framework;
 
-namespace CashRegisterTests
+namespace CashRegister.Tests
 {
     public class Tests
     {

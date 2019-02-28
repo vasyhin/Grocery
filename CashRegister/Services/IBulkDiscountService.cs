@@ -3,7 +3,7 @@
 namespace CashRegister.Services
 {
     /// <summary>
-    /// Defines interface to work with BulkDiscountService
+    /// Defines interface to work with Bul Discount Service
     /// </summary>
     public interface IBulkDiscountService
     {
