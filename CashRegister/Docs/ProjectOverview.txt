@@ -1,4 +1,11 @@
-﻿Scope
+﻿Overview
+
+		The project architecture is open for debate.
+		Instead of using "classic" OOP approach, behaviors were separated to provide for more "modern" service-oriented approach.
+		Also the project uses different coding techniques for demo purposes only.
+
+
+Scope
 
 Design and implement in C# a grocery store cash register.
 
@@ -16,11 +23,8 @@ Design and implement in C# a grocery store cash register.
 
 Out of Scope
 
+		Data connectivity
+		GUI/console
 		Performance
+		Security
 		Localization
-
-Overview
-
-		The project model has separation on objects into domain objects and services.
-		This allows to have behaviour separated from domain models.
-		Domain models can be easily used within some ORM like EntityFramework to map domains into DB tables.
