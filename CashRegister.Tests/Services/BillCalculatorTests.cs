@@ -1,8 +1,8 @@
 using System;
-using Grocery.Data.Bill;
-using Grocery.Data.Catalog;
-using Grocery.Discounts;
-using Grocery.Services;
+using CashRegister.Model.Bill;
+using CashRegister.Model.Catalog;
+using CashRegister.Discounts;
+using CashRegister.Services;
 using Moq;
 using NUnit.Framework;
 using Services;

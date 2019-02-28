@@ -1,10 +1,7 @@
-﻿using Grocery.Discounts;
-using Grocery.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
-namespace Grocery.Data.Bill
+namespace CashRegister.Model.Bill
 {
     /// <summary>
     /// Represents the bill

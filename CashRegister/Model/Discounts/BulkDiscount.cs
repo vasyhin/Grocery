@@ -1,6 +1,4 @@
-﻿using Grocery.Data.Catalog;
-
-namespace Grocery.Discounts
+﻿namespace CashRegister.Discounts
 {
     /// <summary>
     /// Represents bulk discount

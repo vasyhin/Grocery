@@ -1,13 +1,12 @@
-﻿using Grocery.Data.Catalog;
-using Grocery.Discounts;
+﻿using CashRegister.Model.Catalog;
+using CashRegister.Discounts;
 using System;
 using System.Collections.Generic;
 
-namespace Grocery.Services
+namespace CashRegister.Services
 {
     /// <summary>
     /// CatalogService
-    /// TODO: Rename to Store?
     /// </summary>
     public class CatalogService : ICatalogService
     {

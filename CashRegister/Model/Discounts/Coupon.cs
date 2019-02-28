@@ -1,4 +1,4 @@
-﻿namespace Grocery.Discounts
+﻿namespace CashRegister.Discounts
 {
     /// <summary>
     /// Represents bulk discount
@@ -17,7 +17,7 @@
 
         public Coupon(decimal threshold, decimal moneyOff)
         {
-            // TODO: Validation && tests
+            // TODO: Validation & tests
 
             Threshold = threshold;
             MoneyOff = moneyOff;

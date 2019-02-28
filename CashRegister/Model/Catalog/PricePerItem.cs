@@ -1,7 +1,7 @@
-﻿namespace Grocery.Data.Catalog
+﻿namespace CashRegister.Model.Catalog
 {
     /// <summary>
-    /// Defines the cost for items which are sold by item (i.e., Boxes of Cheerios)
+    /// Defines the cost for items which are sold by item (i.e., Cheerios)
     /// </summary>
     public class PricePerItem
     {

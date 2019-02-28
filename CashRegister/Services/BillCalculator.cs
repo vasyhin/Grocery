@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Grocery.Data.Bill;
-using Grocery.Discounts;
-using Grocery.Services;
+using CashRegister.Model.Bill;
+using CashRegister.Discounts;
+using CashRegister.Services;
 
 namespace Services
 {

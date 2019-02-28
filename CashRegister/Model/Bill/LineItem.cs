@@ -1,7 +1,7 @@
 ﻿using System;
-using Grocery.Data.Catalog;
+using CashRegister.Model.Catalog;
 
-namespace Grocery.Data.Bill
+namespace CashRegister.Model.Bill
 {
     /// <summary>
     /// Represents bill line item

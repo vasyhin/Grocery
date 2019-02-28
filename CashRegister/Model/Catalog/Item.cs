@@ -1,7 +1,7 @@
-﻿namespace Grocery.Data.Catalog
+﻿namespace CashRegister.Model.Catalog
 {
     /// <summary>
-    /// Represents item selling in grocery (i.e., Boxes of Cheerios or Apples)
+    /// Represents item selling in CashRegister (i.e., Cheerios or Apples)
     /// </summary>
     public class Item
     {

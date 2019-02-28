@@ -1,8 +1,8 @@
-﻿using Grocery.Data.Catalog;
-using Grocery.Discounts;
+﻿using CashRegister.Model.Catalog;
+using CashRegister.Discounts;
 using System;
 
-namespace Grocery.Services
+namespace CashRegister.Services
 {
     /// <summary>
     /// Defines interface to work with CatalogService

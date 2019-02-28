@@ -1,7 +1,7 @@
 
 using System;
-using Grocery.Data.Bill;
-using Grocery.Data.Catalog;
+using CashRegister.Model.Bill;
+using CashRegister.Model.Catalog;
 using NUnit.Framework;
 
 namespace Tests

@@ -1,7 +1,7 @@
 using System;
-using Grocery.Data.Catalog;
-using Grocery.Discounts;
-using Grocery.Services;
+using CashRegister.Model.Catalog;
+using CashRegister.Discounts;
+using CashRegister.Services;
 using NUnit.Framework;
 
 namespace Tests
